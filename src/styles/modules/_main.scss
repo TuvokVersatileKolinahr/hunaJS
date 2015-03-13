@@ -20,15 +20,15 @@ section.hunajs{
 	}
 
 	@include max-tablet{
-		background-color: rgba(0, 128, 0,.8);
+		background-color: rgba(0, 128, 0,.8); // green
 		font-size: 1.4em;
 	}
 	@include max-small-tablet{
-		background-color: rgba(0, 0, 255, .5);
+		background-color: rgba(0, 0, 255, .5); // blue
 		font-size: 1.2em;
 	}
 	@include max-phone{
-		background-color: rgba(255, 0, 0, .8);
+		background-color: rgba(255, 0, 0, .8); // red
 		font-size: 1em;
 	}
 
@@ -37,10 +37,20 @@ section.hunajs{
 		height: 100%;
 		position: relative;
 
+		@include max-small-tablet{
+			height: auto;
+			padding-top: 50px;
+		}
+
 		.call-to-action{
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
+
+			@include max-small-tablet{
+				position: static;
+				transform: none;
+			}
 
 			h1.title{
 				font-size: 4em;
