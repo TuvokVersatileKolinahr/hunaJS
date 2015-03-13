@@ -10,7 +10,7 @@
   display: inline-block;
   *display: inline;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: 300;
   margin: 0;
   padding: 8px 25.6px;
@@ -132,19 +132,19 @@ input[class*='btn-'], button[class*='btn-'] {
 }
 
 .btn-large {
-  font-size: 19px;
+  font-size: 1.4em;
   height: 38.4px;
   line-height: 38.4px;
   padding: 0 30.72px;
 }
 .btn-small {
-  font-size: 16px;
+  font-size: 1em;
   height: 25.6px;
   line-height: 25.6px;
   padding: 0 20.48px;
 }
 .btn-tiny {
-  font-size: 12px;
+  font-size: .8em;
   height: 22.4px;
   line-height: 22.4px;
   padding: 0 17.92px;
@@ -162,7 +162,7 @@ input[class*='btn-'], button[class*='btn-'] {
   }
   &.small .btn-circle{
     border-width: 2px;
-    font-size: 9px;
+    font-size: .5625em;
     height: 60px;
     padding: 2px; // same as border-width
     width: 60px;
@@ -178,7 +178,7 @@ input[class*='btn-'], button[class*='btn-'] {
   height: 120px;
   padding: 4px; // same as border-width
   border-width: 4px;
-  font-size: 18px;
+  font-size: 1.2em;
 }
 a.btn-circle{
   line-height: 6.8;
@@ -266,7 +266,7 @@ a.btn-circle{
 .btn-next:after, .btn-prev:before {
     color: #D5D5D5;
     font-family: Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-size: 36px;
+    font-size: 2.2em;
     font-weight: 900;
     position: absolute;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
