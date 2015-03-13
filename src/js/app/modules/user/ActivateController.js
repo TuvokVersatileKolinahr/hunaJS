@@ -4,6 +4,6 @@
  */
 app.controller('ActivateController', function($scope){
 
-
+	
 
 });
