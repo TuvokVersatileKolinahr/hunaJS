@@ -30,8 +30,8 @@ var app = angular.module('HunaJS', ['ngRoute'])
     templateUrl: '/js/app/modules/user/login.html'
   })
   .when('/user/password', {
-    controller: 'ResetPasswordController',
-    templateUrl: '/js/app/modules/user/resetpassword.html'
+    controller: 'RecoverPasswordController',
+    templateUrl: '/js/app/modules/user/recoverpassword.html'
   })
 
   // Dashboards
