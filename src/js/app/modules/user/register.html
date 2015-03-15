@@ -3,10 +3,12 @@
     <div class="page-header"></div>
 
     <form class="form register" ng-hide="registered" name="form" ng-submit="register()" novalidate> 
-
         <header>
             <h1>Sign up</h1>
         </header> 
+
+        <p>Don't have an account yet? Sign up here for your free account.</p>
+
 
         <div class="field error" ng-show="error">
             <p ng-bind-html="error"></p>
@@ -27,7 +29,7 @@
             <input type="text" id="fullname" name="fullname" placeholder="Your full name" autocomplete="off" ng-model="user.fullname" required> 
 
              <div ng-show="form.$submitted || form.fullname.$touched" class="error">
-              <span ng-show="form.fullname.$error.required">Please fill in your name.</span>
+              <span ng-show="form.fullname.$error.required">What's your name?</span>
             </div>
         </div> 
 
@@ -81,8 +83,4 @@
 
     </form>
 
-    <ng-include ng-SHOW="registered" src="'js/app/modules/user/activate.html'"></ng-include>
-
-
-	
-	<a href="/#/">Back</a>
+    <ng-include ng-show="registered" src="'js/app/modules/user/activate.html'"></ng-include>
