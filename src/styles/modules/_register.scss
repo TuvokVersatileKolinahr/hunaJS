@@ -1,3 +1,6 @@
+/*
+ * All styles for user actions, like register, sign up / in
+ */
 .page-header{
 	background: rgba(59,19,69, 1);
 	height: 250px;
@@ -7,7 +10,7 @@
 	}
 }
 
-.form.register, .activation{
+.form.register, .activation, .login{
 	background-color: rgba(255,255,255,.6);
 	font-size: 1.6em;
 	margin: 0 auto;
@@ -23,15 +26,18 @@
 	}
 
 	.field{
+
 		label{
 			font-weight: 200;
 			width: 25%;
 		}
+
 		input{
 			font-size: .8em;
 			margin: .2em 0; 
 			width: 75%;
 		}
+
 		.error{
 			color: #666;
 			font-size: .6em;
@@ -42,11 +48,11 @@
 			margin: 50px 0;
 			text-align: right;
 		}
-
-		&.links{
-			font-size: .6em;
-		}
 	}
+	.secundary-text{
+		font-size: .6em;
+	}
+
 	.divider{
 		color: #666;
 		font-style: italic;

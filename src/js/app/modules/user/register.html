@@ -72,14 +72,12 @@
 
         <div class="field buttons">
             <a class="cancel" ng-click="cancel()">Cancel</a>
-            <button class="btn-flat-blue" type="submit" ng-disabled="!form.$valid">Register</button>
+            <button class="btn-flat-blue" type="submit" ng-disabled="form.$invalid">Register</button>
         </div>
 
-        <div class="field links">
-
-          <p>Already have an account? <a href="/#/user/login">Login</a>.
-
-        </div>
+        <p class="secundary-text">
+          Already have an account? <a href="/#/user/login">Login</a>.
+        </p>
 
     </form>
 

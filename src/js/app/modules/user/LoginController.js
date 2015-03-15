@@ -4,6 +4,11 @@
  */
 app.controller('LoginController', function($scope){
 
+	/**
+	 * Tries to login the user, using the login form's fields
+	 */
+	$scope.login = function(){
 
+	};
 
 });
