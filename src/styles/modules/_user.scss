@@ -3,7 +3,7 @@
  */
 .page-header{
 	background: rgba(59,19,69, 1);
-	height: 250px;
+	height: 150px;
 
 	@include phone{
 		height: 25px;
@@ -32,12 +32,14 @@
 
 		label{
 			font-weight: 200;
+			padding: .5em; // same as input
 			width: 25%;
 		}
 
 		input{
 			font-size: .8em;
-			margin: .2em 0; 
+			margin: .2em 0;
+			padding: .5em; // same as label	
 			width: 75%;
 		}
 
