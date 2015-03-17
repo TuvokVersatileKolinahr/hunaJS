@@ -2,7 +2,7 @@ section.hunajs{
   background: $background-color url(../img/smoke.png) no-repeat 0 0;
   background-attachment: fixed;
   background-size: cover;
-  color: #ffffff;
+  color: $font-color;
   font-size: 1.6em;
   height: 100%;
   padding: 2% 10%;
@@ -52,7 +52,7 @@ section.hunajs{
       .btn-register{
         background: transparent;
         border-radius: 3px;
-        color: #fff;
+        color: $font-color;
         font-family: "Open Sans";
         font-size: 1.4em;
         padding: 10px 30px;
@@ -60,8 +60,8 @@ section.hunajs{
         transition: all .3s ease-in 0s;
 
         &:hover{
-          border-color: rgba(59,19,69, 1);
-          box-shadow: 0 0 3px #fff;
+          background: $font-color;
+          color: $background-color;
         }
       }
     }
