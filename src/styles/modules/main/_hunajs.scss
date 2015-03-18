@@ -28,7 +28,7 @@ section.hunajs{
 
     @include max-small-tablet{
       height: auto;
-      padding-top: 50px;
+      padding-top: 2em;
     }
 
     .call-to-action{
@@ -47,7 +47,7 @@ section.hunajs{
       }
       h2.subtitle{
         font-size: 1.2em;
-        margin-bottom: 20px;
+        margin-bottom: .8em;
       }
       .btn-register{
         background: transparent;
@@ -55,7 +55,7 @@ section.hunajs{
         color: $font-color;
         font-family: "Open Sans";
         font-size: 1.4em;
-        padding: 10px 30px;
+        padding: 0.3em 1em;
         text-shadow: none;
         transition: all .3s ease-in 0s;
 
