@@ -2,12 +2,13 @@
 section.pricing{
 
   background: $font-color;
-  margin: 50px;
+  min-height: 100%;
+  padding: 3em;
   text-align: center;
 
   h1{
     font-size: 3em;
-    margin: 30px 0 50px;
+    margin: 1em 0;
   }
   
   .pricing-row{
@@ -20,19 +21,19 @@ section.pricing{
       font-size: 1.6em;
       margin: 0 2%;
       width: 29.333333%;
-      max-width: 350px;
+      max-width: 13.72549em;
 
       header{
         background-color: complement($background-color);
         color: $font-color;
         font-size: 2em;
         font-weight: 200;
-        margin-bottom: 44px;
-        padding: 10px 0 25px;
+        margin-bottom: .7em;
+        padding: .2em 0 .4em;
       }
 
       .body{
-        padding: 10px;
+        padding: .8em;
 
         .col1{
           text-align: right;
@@ -43,7 +44,7 @@ section.pricing{
       }
 
       footer{
-        margin: 50px 0 20px;
+        margin: 2em 0 1em;
       }
 
       .btn-flat-green{
