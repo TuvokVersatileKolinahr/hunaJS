@@ -95,9 +95,10 @@ section.pricing{
         }
       }
 
-      .btn-flat-green{
+      .btn-signup{
         background: complement($background-color);
         border-color: #445F21;
+        color: $font-color-light;
         &:hover{
           background: darken(complement($background-color), 5%);
         }
