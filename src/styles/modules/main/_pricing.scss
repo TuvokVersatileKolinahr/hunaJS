@@ -3,7 +3,7 @@ section.pricing{
 
   background: $font-color;
   min-height: 100%;
-  padding: 3em;
+  padding: 2rem;
   text-align: center;
 
   @include max-phone{
@@ -21,6 +21,7 @@ section.pricing{
   }
   @include max-phone{
     font-size: .8em;
+    padding: .2rem;
   }
 
   h1{
