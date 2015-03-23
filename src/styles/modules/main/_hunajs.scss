@@ -9,7 +9,7 @@ section.hunajs{
   transition: background-color 2s ease-in 0s;
 
   @include max-tablet{
-    background-color: rgba(0, 128, 0,.8); // green
+    background-color: rgba(0, 128, 0, .8); // green
     font-size: 1.4em;
   }
   @include max-small-tablet{
@@ -62,6 +62,17 @@ section.hunajs{
         &:hover{
           background: $font-color;
           color: $background-color;
+
+          // Match background colors of section.hunajs
+          @include max-tablet{
+            color: rgba(0, 128, 0,.8); // green
+          }
+          @include max-small-tablet{
+            color: rgba(0, 0, 255, .5); // blue
+          }
+          @include max-phone{
+            color: rgba(255, 0, 0, .8); // red
+          }
         }
       }
     }
