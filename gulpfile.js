@@ -19,7 +19,6 @@ var gulp = require('gulp'),
     argv = require('yargs').argv,
     gulpif = require('gulp-if'),
     todo = require('gulp-todo'),
-    jsdoc = require("gulp-jsdoc"),
     plumber = require('gulp-plumber'),
     ngannotate = require('gulp-ng-annotate'),
     replace = require('gulp-replace');
@@ -100,15 +99,6 @@ gulp.task('copy', function() {
  * Depends on: build
  */
 gulp.task('default', ['build']);
-
-
-/**
- * Generate docs from all application javascript
- */
-gulp.task('docs', function() {
-  return gulp.src("./src/js/app/**/*.js")
-    .pipe(jsdoc('./docs'))
-});
 
 
 /**
