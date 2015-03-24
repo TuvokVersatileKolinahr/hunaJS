@@ -8,14 +8,15 @@ app.controller('LoginController', function($scope, $http){
 	 * Tries to login the user, using the login form's fields
 	 */
 	$scope.login = function(){
-    $http.post('/api/login', {msg:'hello word!'}).
-      success(function(data, status, headers, config) {
-        // this callback will be called asynchronously
-        // when the response is available
-      }).
-      error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
+    $http.post('/api/login', {
+        username: $scope.form.username.$modelValue,
+        password: $scope.form.password.$modelValue 
+      })
+      .success(function(data, status, headers, config) {
+        console.log("data, status, headers, config", data, status, headers, config);
+      })
+      .error(function(data, status, headers, config) {
+        console.log("data, status, headers, config", data, status, headers, config);
     });
 	};
 
