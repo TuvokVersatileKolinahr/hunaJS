@@ -66,7 +66,7 @@ gulp.task('build', ['clean'], function() {
  * Cleans the `dist` folder and other generated files
  */
 gulp.task('clean', function(cb) {
-    del(['dist', 'docs','todo.md', 'todo.json'], cb);
+    del(['dist', 'todo.md', 'todo.json'], cb);
 });
 
 
@@ -174,10 +174,8 @@ gulp.task('remove',['clean'], function(cb){
 /**
  * Minifies all javascript found in the `src/js/**` folder. All files will be concatenated into `app.js`.  Minified and non-minified versions are copied to the dist folder.
  * This will also generete sourcemaps for the minified version.
- *
- * Depends on: docs
  */
-gulp.task('scripts-app', ['docs'], function() {
+gulp.task('scripts-app', [], function() {
   return gulp.src('src/js/app/**/*.js')
     .pipe(plumber())
     .pipe(sourcemaps.init())
