@@ -176,7 +176,7 @@ gulp.task('remove',['clean'], function(cb){
  * This will also generete sourcemaps for the minified version.
  */
 gulp.task('scripts-app', [], function() {
-  return gulp.src('src/js/app/**/*.js')
+  return gulp.src(['src/js/app/huna.js','src/js/app/**/*.js'])
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(jshint())
