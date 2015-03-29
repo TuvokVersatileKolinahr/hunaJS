@@ -8,7 +8,7 @@
   if (typeof window.huna === "undefined"){
     window.huna = true;
     try{
-
+      console.log("Initializing HunaJS");
       // get old error handler
       var oldErrHandler = window.onerror;
       window.onerror = function(err, script, line, col, cause){
