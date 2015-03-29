@@ -7,15 +7,15 @@
             <h1>Login</h1>
         </header> 
 
-        <div class="field error" ng-show="error">
+        <div class="form-error" ng-show="error">
             Error signing in. Please try again...
         </div> 
         
         <div class="field">
             <label for="username">Username</label> 
-            <input type="text" id="username" name="username" placeholder="Your username" autocomplete="off" ng-model="user.username" required> 
+            <input type="text" id="username" name="username" placeholder="Your username" autocomplete="off" ng-model="login.username" required> 
 
-            <div ng-show="form.$submitted || form.username.$touched" class="error">
+            <div ng-show="form.$submitted || form.username.$dirty" class="error">
               <span ng-show="form.username.$error.required">Username is required.</span>
             </div>
         </div> 
@@ -24,7 +24,7 @@
             <label for="password">Password</label> 
             <input type="password" id="password" name="password" placeholder="password" autocomplete="off" ng-model="login.password" required> 
 
-             <div ng-show="form.$submitted || form.password.$touched" class="error">
+             <div ng-show="form.$submitted || form.password.$dirty" class="error">
               <span ng-show="form.password.$error.required">Password is required.</span>
             </div>
         </div>
