@@ -73,7 +73,6 @@
               };
               r.open('post', 'http://huna.tuvok.nl/interceptor', true);
               r.setRequestHeader('Content-type','application/json; charset=utf-8');
-              r.setRequestHeader("Connection", "close");
               r.send(json);
 
               console.log("error: " + err, script, line);
