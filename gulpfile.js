@@ -88,7 +88,7 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('dist/js/app'));
 
   //copy the error test page
-  gulp.src('scr/errortest.html')
+  gulp.src('src/errortest.html')
     .pipe(gulp.dest('dist/'));
 
   // copy the index.html
