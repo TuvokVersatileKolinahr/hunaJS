@@ -1,16 +1,37 @@
 section.features{
 
-  margin-bottom: 150px;
+  margin: 150px 0;
  
   .feature{
+    height: 400px;
     padding-top: 256px;
     text-align: center;
-  }
-  h3{
-    font-size: 2.4em;
-  }
-  .charts{
-    background: transparent url('../img/charts.png') no-repeat center top;
-  }
 
+    h3{
+      font-size: 2.4em;
+    }
+    .summary{
+      font-size: 1.4em;
+      padding: 0 2rem;
+    }
+
+    &.errors{
+      background: transparent url('../img/errors.png') no-repeat center top;
+    }
+    &.charts{
+      background: transparent url('../img/charts.png') no-repeat center top;
+    }
+    &.real-time{
+      background: transparent url('../img/real-time.png') no-repeat center top;
+    }
+    &.cloud{
+      background: transparent url('../img/cloud.png') no-repeat center top;
+    }
+    &.api{
+      background: transparent url('../img/api.png') no-repeat center top;
+    }
+    &.bugs{
+      background: transparent url('../img/bugs.png') no-repeat center top;
+    }
+  }
 }
