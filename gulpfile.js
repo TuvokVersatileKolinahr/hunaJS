@@ -87,6 +87,10 @@ gulp.task('copy', function() {
   gulp.src( ['src/js/app/**/*.html', 'src/js/app/**/*.json'])
     .pipe(gulp.dest('dist/js/app'));
 
+  //copy the error test page
+  gulp.src('scr/errortest.html')
+    .pipe(gulp.dest('dist/'));
+
   // copy the index.html
    return gulp.src('src/index.html')
     .pipe(gulpif(options.liveReload, replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1")))
