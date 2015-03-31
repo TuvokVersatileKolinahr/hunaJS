@@ -11,10 +11,16 @@ var app = angular.module('HunaJS', ['ngRoute'])
  
   // Root
   $routeProvider
-  	.when('/', {
+  .when('/', {
 	  controller: 'MainController',
 	  templateUrl: '/js/app/modules/main/main.html'
 	})
+
+  // error
+  .when('/error', {
+    controller: 'ErrorController',
+    templateUrl: '/js/app/modules/error/error.html'
+  })
 
   // User Routes
 	.when('/user/register', {
