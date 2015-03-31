@@ -20,8 +20,6 @@
           line: line,
           col: col,
           cause: cause,
-          username: window.location.username,
-          password: window.location.password,
           navigator: {
             appname: window.navigator.appName,
             appversion: window.navigator.appVersion,
