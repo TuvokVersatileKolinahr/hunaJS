@@ -7,12 +7,12 @@
 
   if (typeof window.huna === "undefined"){
     window.huna = true;
+    // override console.error and log it too
+    console = console || {};
+    console.oldError = console.error;
     try{
       console.log("Initializing HunaJS");
 
-      // override console.error and log it too
-      console = console || {};
-      console.oldError = console.error;
       console.error = function(err){
         window.onerror(err);
         console.oldError(err);
@@ -21,7 +21,7 @@
       // get old error handler
       var oldErrHandler = window.onerror;
       window.onerror = function(err, script, line, col, cause){
-
+        console.oldError(err, script, line, col, cause);
         // harvest as much information as we need...
         var json = {
           error: err,
@@ -46,21 +46,21 @@
         var r = new XMLHttpRequest();
         r.onabort = function(e){
           console.log("onabort");
-          console.log("XHR failed " + this.status);
+          console.oldError("XHR to HunaJS failed due to abort " + this.status);
           e.preventDefault();
           e.stopPropagation();
           return false;
         };
         r.onerror = function(e){
           console.log("onerror");
-          console.log("XHR failed " + this.status);
+          console.oldError("XHR to HunaJS failed " + this.status);
           e.preventDefault();
           e.stopPropagation();
           return false;
         };
         r.ontimeout = function(e){
           console.log("ontimeout");
-          console.log("XHR timeout " + this.status);
+          console.oldError("XHR to HunaJS failed due to timeout " + this.status);
           e.preventDefault();
           e.stopPropagation();
           return false;
@@ -72,9 +72,7 @@
         };
         r.open('post', 'http://huna.tuvok.nl/interceptor', true);
         r.setRequestHeader('Content-type','application/json; charset=utf-8');
-        r.send(JSON.stringify(json));
-
-        console.log("error: " + err, script, line); 
+        r.send(JSON.stringify(json)); 
       };
 
     }catch(err){
