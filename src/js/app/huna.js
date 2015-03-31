@@ -20,8 +20,6 @@
           line: line,
           col: col,
           cause: cause,
-          host: window.location.host,
-          url: window.location.href,
           username: window.location.username,
           password: window.location.password,
           navigator: {
