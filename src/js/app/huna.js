@@ -15,6 +15,7 @@
       console.oldError = console.error;
       console.error = function(err){
         window.onerror(err);
+        console.oldError(err);
       };
 
       // get old error handler
@@ -45,35 +46,35 @@
         var r = new XMLHttpRequest();
         r.onabort = function(e){
           console.log("onabort");
-          console.log("XHR failed" + this.status + " - " + this.response);
+          console.log("XHR failed " + this.status);
           e.preventDefault();
           e.stopPropagation();
           return false;
         };
         r.onerror = function(e){
           console.log("onerror");
-          console.log("XHR failed" + this.status + " - " + this.response);
+          console.log("XHR failed " + this.status);
           e.preventDefault();
           e.stopPropagation();
           return false;
         };
         r.ontimeout = function(e){
           console.log("ontimeout");
-          console.log("XHR timeout" + this.status + " - " + this.response);
+          console.log("XHR timeout " + this.status);
           e.preventDefault();
           e.stopPropagation();
           return false;
         };
         r.onreadystatechange = function(e) {
           if (this.readyState == 4){
-            console.log("XHR succeeded" + this.status + " - " + this.response);
+            console.log("XHR succeeded " + this.status);
           }
         };
         r.open('post', 'http://huna.tuvok.nl/interceptor', true);
         r.setRequestHeader('Content-type','application/json; charset=utf-8');
         r.send(JSON.stringify(json));
 
-        console.log("error: " + err, script, line);
+        console.log("error: " + err, script, line); 
       };
 
     }catch(err){
