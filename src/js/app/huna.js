@@ -9,6 +9,14 @@
     window.huna = true;
     try{
       console.log("Initializing HunaJS");
+
+      // override console.error and log it too
+      console = console || {};
+      console.oldError = console.error;
+      console.error = function(err){
+        window.onerror(err);
+      };
+
       // get old error handler
       var oldErrHandler = window.onerror;
       window.onerror = function(err, script, line, col, cause){
