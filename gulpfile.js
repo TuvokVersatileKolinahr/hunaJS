@@ -188,6 +188,23 @@ gulp.task('remove',['clean'], function(cb){
  * This will also generete sourcemaps for the minified version.
  */
 gulp.task('scripts-app', [], function() {
+  // build separate huna lib
+  gulp.src('src/js/app/huna.js')
+    // dev code
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .on('error', notify.onError(function (error) {
+      return error.message;
+     }))
+    .pipe(gulp.dest('dist/js'))
+    // production code
+    .pipe(rename({suffix: '.min'}))
+    .pipe(stripDebug())
+    .pipe(uglify())
+    .on('error', handleError)
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/js'));
+
   return gulp.src(['src/js/app/huna.js','src/js/app/**/*.js'])
     .pipe(plumber())
     .pipe(sourcemaps.init())
