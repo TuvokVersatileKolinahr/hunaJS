@@ -1,0 +1,59 @@
+.dashboard{
+
+  background-color: #E5E5E5;
+  height: 100%;
+
+  .menu{
+    background-color: #282424;
+    float: left;
+    height: 100%;
+    width: 12rem;
+
+    h3{
+      qbackground-color: #000;
+      border-bottom: 1px solid #666;
+      color: #ffffff;
+      padding-top: 1rem;
+      text-align: center;
+    }
+
+    a{
+      color: #ffffff;
+      display: block;
+      padding: 1em;
+      position: relative;
+
+      &:hover{
+        background-color: lighten(#282424, 10%);
+      }
+
+      &.selected{
+        background-color: lighten(#282424, 10%);
+
+        &:after{
+          width: 0; 
+          height: 0; 
+          border-top: 1.5em solid transparent;
+          border-bottom: 1.5em solid transparent;
+          border-left: 1.5em solid lighten(#282424, 10%);
+          content:"";
+          position: absolute;
+          top: .25em;
+          right: -1.5em;
+        }
+      }
+    }
+
+    .add{
+      border-top: 1px solid #666;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      text-align: center;
+    }
+  }
+
+  .content{
+    padding-left: 12rem;
+  }
+
+}

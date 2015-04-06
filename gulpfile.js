@@ -99,6 +99,10 @@ gulp.task('copy', function() {
   gulp.src('src/errortest.html')
     .pipe(gulp.dest('dist/'));
 
+     // copy all vendor css
+  gulp.src( 'src/js/vendor/**')
+    .pipe(gulp.dest('dist/js/vendor'));
+
   // copy the index.html
    return gulp.src('src/index.html')
     .pipe(gulpif(options.liveReload, replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1")))

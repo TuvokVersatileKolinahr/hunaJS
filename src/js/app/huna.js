@@ -41,6 +41,9 @@
             availHeight: window.screen.availHeight,
             availWidth: window.screen.availWidth
           }
+
+          // log original error to console
+          //window['console'].error(err);
         };
 
         var r = new XMLHttpRequest();
