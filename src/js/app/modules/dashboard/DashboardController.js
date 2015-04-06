@@ -21,7 +21,7 @@ app.controller('DashboardController', function($scope, DashboardServices){
     },
     axis: {
       x: {
-        type: 'category',
+        type: 'timeseries',
         categories: ['1 March 2015','2 March 2015','3 March 2015','4 March 2015','5 March 2015','6 March 2015']
       },
       y: {
