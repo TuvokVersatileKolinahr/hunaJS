@@ -32,7 +32,22 @@ app.controller('DashboardController', function($scope, DashboardServices){
         }
       }
     }
-});
+  });
+
+  var relationsChart = c3.generate({
+    bindto: '#relationChart',
+    data: {
+      columns: [
+        ['warnings', 30, 200, 100, 300, 150, 250],
+        ['errors'  , 50,  20,  10,  40,  15,  25],
+        ['info'    , 80,  75, 157,  86, 136, 182]
+      ],
+      type: 'donut'
+    },
+    donut: {
+        title: "Errors / warnings / info"
+    }
+  });
 
   $scope.select = function(host){
     $scope.selected = host;
