@@ -29,3 +29,7 @@ node_modules
 dist/
 docs/
 TODO.md
+
+# sublime files
+*.sublime-project
+*.sublime-workspace
