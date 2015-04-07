@@ -4,7 +4,7 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
 
 
   // update data when selected host has been changed
-  $scope.$watch('selected', function(oldValue, value){
+  $scope.$watch('selected', function(value, oldValue){
     ChartService.getData(value.host).then(function(data){
       mainChart.load(data);
       relationsChart.load(data);
