@@ -6,7 +6,7 @@ app.service('DashboardServices', function($q){
   var mockHosts = [
     {'host':'elgervanboxtel.nl'}, 
     {'host':'wouterroosendaal.nl'}, 
-    {'host':'tovok.nl'}
+    {'host':'tuvok.nl'}
   ],
   getHosts = function(){
     return $q(function(resolve, reject) {

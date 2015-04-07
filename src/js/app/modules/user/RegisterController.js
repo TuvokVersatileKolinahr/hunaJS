@@ -3,14 +3,6 @@
  * code, the user can activate his account.
  */
 app.controller('RegisterController', function($scope, $location, $http){
-  // $scope.user = {
-  //   username: "henkie",
-  //   fullname: "Henkie Henk",
-  //   email: "henkie@henk.nl",
-  //   password: "henkiehenk"
-  // };
-  // $scope.passwordretype = $scope.user.password;
-
   /**
    * Cancels the registration and takes the user back to the main page
    */
