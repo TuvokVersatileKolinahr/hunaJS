@@ -135,7 +135,7 @@ gulp.task('express', function(){
  * Task to start a Express server on port 4000 and used the live reload functionality.
  * Depends on: express, live-reload
  */
-gulp.task('express-lr', ['express', 'live-reload'], function(){});
+gulp.task('start', ['express', 'live-reload'], function(){});
 
 /**
  * Task to optimize and deploy all images found in folder `src/img/**`. Result is copied to `dist/img`
