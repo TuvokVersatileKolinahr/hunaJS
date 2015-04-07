@@ -65,8 +65,7 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
     },
     legend: {
       item: {
-        onclick: function (id) {
-          //debugger;
+        onclick: function (id) { 
           relationsChart.toggle(id, {withLegend: false});
           mainChart.toggle(id, {withLegend: false});
         }
