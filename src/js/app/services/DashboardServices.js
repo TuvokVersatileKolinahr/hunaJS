@@ -10,7 +10,7 @@ app.service('DashboardServices', function($q){
   ],
   getHosts = function(){
     return $q(function(resolve, reject) {
-      resolve(mockHosts);
+      resolve(mockHosts); 
     });
   };
 
