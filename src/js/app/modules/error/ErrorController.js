@@ -15,7 +15,7 @@ app.controller('ErrorController', function($scope, $interval){
 
   $scope.syntaxError = function(){
     countDown();
-    eval("var a = b;");
+    eval("var a = b;"); // jshint ignore:line
   };
 
   $scope.uncaughtException = function(){
