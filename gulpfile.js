@@ -85,28 +85,28 @@ gulp.task('copy', function() {
 
   // copy all jpg's as they are not handled by the images task
   gulp.src( 'src/img/**/*.jpg')
-    .pipe(gulp.dest('dist/img'));
+    .pipe(cache(gulp.dest('dist/img')));
 
   // copy all fonts
   gulp.src( 'src/fonts/**')
-    .pipe(gulp.dest('dist/fonts'));
+    .pipe(cache(gulp.dest('dist/fonts')));
 
   // copy all html && json
   gulp.src( ['src/js/app/**/*.html', 'src/js/app/**/*.json'])
-    .pipe(gulp.dest('dist/js/app'));
+    .pipe(cache(gulp.dest('dist/js/app')));
 
   //copy the error test page
   gulp.src('src/errortest.html')
-    .pipe(gulp.dest('dist/'));
+    .pipe(cache(gulp.dest('dist/')));
 
      // copy all vendor css
   gulp.src( 'src/js/vendor/**')
-    .pipe(gulp.dest('dist/js/vendor'));
+    .pipe(cache(gulp.dest('dist/js/vendor')));
 
   // copy the index.html
    return gulp.src('src/index.html')
     .pipe(gulpif(options.liveReload, replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1")))
-    .pipe(gulp.dest('dist/'));
+    .pipe(cache(gulp.dest('dist/')));
 });
 
 
@@ -196,27 +196,27 @@ gulp.task('scripts-app', [], function() {
   gulp.src('src/js/app/huna.js')
     // dev code
     .pipe(plumber())
-    .pipe(gulp.dest('dist/js'))
+    .pipe(cache(gulp.dest('dist/js')))
     // production code
     .pipe(sourcemaps.init())
     .pipe(rename({suffix: '.min'}))
     .pipe(stripDebug())
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/js'));
+    .pipe(cache(gulp.dest('dist/js')));
 
   return gulp.src(['src/js/app/**/*.js'])
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(concat('app.js'))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(cache(gulp.dest('dist/js')))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulpif(!argv.dev, stripDebug()))
     .pipe(ngannotate())
     .pipe(gulpif(!argv.dev, uglify()))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/js'));
+    .pipe(cache(gulp.dest('dist/js')));
 });
 
 
@@ -226,7 +226,6 @@ gulp.task('scripts-app', [], function() {
 gulp.task('scripts-vendor', function() {
     // script must be included in the right order. First include angular, then angular-route
   return gulp.src(['src/js/vendor/**/angular.min.js','src/js/vendor/**/angular-route.min.js','src/js/vendor/**/*.js'])
-    .pipe(gulp.dest('dist/js/vendor'))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/js/vendor'));
 });
@@ -241,10 +240,10 @@ gulp.task('styles', function() {
     .pipe(plumber())
     .pipe(sass({ style: 'expanded' }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(cache(gulp.dest('dist/css')))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('dist/css'));
+    .pipe(cache(gulp.dest('dist/css')));
 });
 
 
