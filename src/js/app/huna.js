@@ -9,7 +9,7 @@
     window.huna = true;
     // override console.error and log it too
     console = console || {};
-    console.oldError = console.error;
+    console.oldError = console.error || function(){};
     try{
       console.log("Initializing HunaJS");
 
