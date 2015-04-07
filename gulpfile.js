@@ -196,26 +196,18 @@ gulp.task('scripts-app', [], function() {
   gulp.src('src/js/app/huna.js')
     // dev code
     .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .on('error', notify.onError(function (error) {
-      return error.message;
-     }))
     .pipe(gulp.dest('dist/js'))
     // production code
+    .pipe(sourcemaps.init())
     .pipe(rename({suffix: '.min'}))
     .pipe(stripDebug())
     .pipe(uglify())
-    .on('error', handleError)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/js'));
 
-  return gulp.src(['src/js/app/huna.js','src/js/app/**/*.js'])
+  return gulp.src(['src/js/app/**/*.js'])
     .pipe(plumber())
-    .pipe(sourcemaps.init())
     .pipe(jshint())
-    .on('error', notify.onError(function (error) {
-      return error.message;
-     }))
     .pipe(jshint.reporter(stylish))
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist/js'))
@@ -223,7 +215,6 @@ gulp.task('scripts-app', [], function() {
     .pipe(gulpif(!argv.dev, stripDebug()))
     .pipe(ngannotate())
     .pipe(gulpif(!argv.dev, uglify()))
-    .on('error', handleError)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/js'));
 });
@@ -234,7 +225,7 @@ gulp.task('scripts-app', [], function() {
  */
 gulp.task('scripts-vendor', function() {
     // script must be included in the right order. First include angular, then angular-route
-  return gulp.src(['src/js/vendor/angularjs/**/angular.min.js','src/js/vendor/angularjs/**/angular-route.min.js','src/js/vendor/**/*.js'])
+  return gulp.src(['src/js/vendor/**/angular.min.js','src/js/vendor/**/angular-route.min.js','src/js/vendor/**/*.js'])
     .pipe(gulp.dest('dist/js/vendor'))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/js/vendor'));
@@ -249,9 +240,7 @@ gulp.task('styles', function() {
   return gulp.src('src/styles/main.scss')
     .pipe(plumber())
     .pipe(sass({ style: 'expanded' }))
-    .on('error', handleError)
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .on('error', handleError)
     .pipe(gulp.dest('dist/css'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
@@ -294,10 +283,6 @@ gulp.task('watch', function() {
 });
 
 
-function handleError (error) {
-
-    //If you want details of the error in the console
-    console.log(error.toString());
-
-    this.emit('end');
-}
+/*notify.onError(function (error) {
+      return error.message;
+     })*/
