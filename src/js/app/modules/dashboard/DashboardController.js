@@ -40,6 +40,14 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
           position: 'outer-middle'
         }
       }
+    },
+    legend: {
+      item: {
+        onclick: function (id) { 
+          relationsChart.toggle(id, {withLegend: false});
+          mainChart.toggle(id, {withLegend: false});
+        }
+      }
     }
   });
 
@@ -54,6 +62,15 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
     },
     donut: {
         title: "Errors / warnings / info"
+    },
+    legend: {
+      item: {
+        onclick: function (id) {
+          //debugger;
+          relationsChart.toggle(id, {withLegend: false});
+          mainChart.toggle(id, {withLegend: false});
+        }
+      }
     }
   });
 
