@@ -9,15 +9,17 @@ app.controller('DashboardController', function($scope, DashboardServices){
     }
   });
 
+
+var data = [
+    ['warnings', 30, 200, 100, 300, 150, 250],
+    ['errors'  , 50,  20,  10,  40,  15,  25],
+    ['info'    , 80,  75, 157,  86, 136, 182]
+  ];
   // main chart
   var mainChart = c3.generate({
     bindto: '#mainChart',
     data: {
-      columns: [
-        ['warnings', 30, 200, 100, 300, 150, 250],
-        ['errors'  , 50,  20,  10,  40,  15,  25],
-        ['info'    , 80,  75, 157,  86, 136, 182]
-      ],
+      columns: data,
       type: 'spline'
     },
     axis: {
@@ -37,11 +39,7 @@ app.controller('DashboardController', function($scope, DashboardServices){
   var relationsChart = c3.generate({
     bindto: '#relationChart',
     data: {
-      columns: [
-        ['warnings', 30, 200, 100, 300, 150, 250],
-        ['errors'  , 50,  20,  10,  40,  15,  25],
-        ['info'    , 80,  75, 157,  86, 136, 182]
-      ],
+      columns: data,
       type: 'donut'
     },
     donut: {
