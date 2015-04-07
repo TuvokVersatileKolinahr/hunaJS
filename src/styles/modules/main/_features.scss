@@ -1,11 +1,23 @@
 section.features{
 
   margin: 150px 0;
+
+  .row{
+    @extend .clearfix;
+  }
  
+  $img-size: 128px;
   .feature{
-    height: 400px;
-    padding-top: 256px;
+    background-repeat: no-repeat;
+    background-size: $img-size;
+    background-position: center top;
+    margin-bottom: 3rem;
+    padding-top: $img-size;
     text-align: center;
+
+     @include max-small-tablet{
+      width: 100%;
+    }
 
     h3{
       font-size: 2.4em;
@@ -16,22 +28,22 @@ section.features{
     }
 
     &.errors{
-      background: transparent url('../img/errors.png') no-repeat center top;
+      background-image: url('../img/errors.png');
     }
     &.charts{
-      background: transparent url('../img/charts.png') no-repeat center top;
+      background-image: url('../img/charts.png');
     }
     &.real-time{
-      background: transparent url('../img/real-time.png') no-repeat center top;
+      background-image: url('../img/real-time.png');
     }
     &.cloud{
-      background: transparent url('../img/cloud.png') no-repeat center top;
+      background-image: url('../img/cloud.png');
     }
     &.api{
-      background: transparent url('../img/api.png') no-repeat center top;
+      background-image: url('../img/api.png');
     }
     &.bugs{
-      background: transparent url('../img/bugs.png') no-repeat center top;
+      background-image: url('../img/bugs.png');
     }
   }
 }
