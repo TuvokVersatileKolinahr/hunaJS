@@ -25,7 +25,7 @@
         // harvest as much information as we need...
         var json = {
           error: err,
-          script:   script,
+          script: script,
           line: line,
           col: col,
           cause: cause,
