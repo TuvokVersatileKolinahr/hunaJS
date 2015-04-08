@@ -125,7 +125,7 @@ gulp.task('express', function(){
   var url = require('url');
   var proxy = require('proxy-middleware');
   app.use(express.static(__dirname + "/dist"));
-  app.use('/api', proxy(url.parse('http://localhost:1337')));
+  app.use('/api', proxy(url.parse('http://localhost:1337/api')));
   app.listen(port); 
   console.log('started webserver on port ' + port);
 });
