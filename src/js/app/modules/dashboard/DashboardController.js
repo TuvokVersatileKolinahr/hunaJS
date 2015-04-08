@@ -27,7 +27,7 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
       type: 'spline'
     },
     color: {
-        pattern: ['#e67e22','#e74c3c','#E8C53A']
+        pattern: ['#e67e22','#e74c3c','#3498db']
     },
     axis: {
       x: {
@@ -58,7 +58,7 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
       type: 'donut'
     },
     color: {
-        pattern: ['#e67e22','#e74c3c','#E8C53A']
+        pattern: ['#e67e22','#e74c3c','#3498db']
     },
     donut: {
         title: "Errors / warnings / info"
