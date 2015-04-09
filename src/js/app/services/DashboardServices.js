@@ -7,13 +7,13 @@ app.service('DashboardServices', function($q){
     {'host':'elgervanboxtel.nl'}, 
     {'host':'wouterroosendaal.nl'}, 
     {'host':'tuvok.nl'}
-  ];
+  ],
   getHosts = function(){
     return $q(function(resolve, reject) {
       resolve(mockHosts); 
     });
-  };
-  var mockData = [
+  },
+  mockData = [
     {
       "errorComponent":"RegisterController.js",
       "line":23,
@@ -57,13 +57,14 @@ app.service('DashboardServices', function($q){
       "ip":"98.26.35.2",
       "occurrences":12
     }
-   ];
+   ],
   getData = function() {
     return $q(function(resolve, reject) {
       resolve(mockData);
     });
   };
   return {
+    getData:getData,
     getHosts:getHosts
   };
 
