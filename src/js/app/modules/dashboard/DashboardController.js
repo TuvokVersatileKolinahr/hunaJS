@@ -18,6 +18,12 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
       $scope.selected = hosts[0];
     }
   });
+  DashboardServices.getData().then(function(data){
+    $scope.dataset = data;
+    // if(data && angular.isArray(data)){
+    //   $scope.selected = data[0];
+    // }
+  });
 
   // main chart
   var mainChart = c3.generate({
