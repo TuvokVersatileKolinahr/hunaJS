@@ -1,13 +1,17 @@
-
-
 app.controller('DashboardController', function($scope, DashboardServices, ChartService){
 
+  var mainChart, relationsChart;
 
   // update data when selected host has been changed
   $scope.$watch('selected', function(value, oldValue){
     ChartService.getData(value.host).then(function(data){
+      
+      // set chart data
       mainChart.load(data);
       relationsChart.load(data);
+
+      // calculate totals
+      calculateTotals(data);
     });
   });
 
@@ -20,13 +24,10 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
   });
   DashboardServices.getData().then(function(data){
     $scope.dataset = data;
-    // if(data && angular.isArray(data)){
-    //   $scope.selected = data[0];
-    // }
   });
 
-  // main chart
-  var mainChart = c3.generate({
+  // initialize main chart, data will be loaded later
+  mainChart = c3.generate({
     bindto: '#mainChart',
     data: {
       columns: [],
@@ -38,7 +39,7 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
     axis: {
       x: {
         type: 'categories',
-        categories: ['1 March 2015','2 March 2015','3 March 2015','4 March 2015','5 March 2015','6 March 2015']
+        categories: ['1 March 2015','2 March 2015','3 March 2015','4 March 2015','5 March 2015','6 March 2015'] // TODO categories should come from the same call as the data...
       },
       y: {
         label: {
@@ -57,7 +58,8 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
     }
   });
 
-  var relationsChart = c3.generate({
+  // initialize relations chart, data will be loaded later
+  relationsChart = c3.generate({
     bindto: '#relationChart',
     data: {
       columns: [  ],
@@ -79,8 +81,41 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
     }
   });
 
+  /**
+   * Mark a host as selected
+   */
   $scope.select = function(host){
     $scope.selected = host;
   };
+
+  /**
+   * Calculate the totals for errors / warnings and info based on the data provided
+   * The totals will be set on the scope
+   */
+  function calculateTotals(data){
+    if (data && angular.isArray(data.columns)){
+      copy = angular.copy(data.columns); // copy array, so we can change it 
+      copy.forEach(function(item,i){
+        var type = item.shift(),
+        total = item.reduce(function(prev, current) {
+          return prev+current;
+        });
+        
+        switch(type){
+          case 'errors':
+            $scope.errorTotals = total;
+            break;
+          case 'warnings':
+            $scope.warningTotal = total;
+            break;
+          case 'info':
+            $scope.infoTotal = total;
+            break;
+          default:
+            console.error("No such data: " + info);
+        }
+      });
+    }
+  }
 
 });
