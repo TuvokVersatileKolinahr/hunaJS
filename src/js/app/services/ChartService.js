@@ -15,7 +15,7 @@ app.service('ChartService', function($q){
         ['info'    , 80,  50, 157,  77, 26, 88]
       ],
       'tuvok.nl': [
-        ['warnings', 60, 120, 30, 150, 280, 60],
+        ['warnings', 60, 80, 30, 130, 148, 66],
         ['errors'  , 20,  50,  40,  10,  6,  20],
         ['info'    , 90,  56, 78,  120, 80, 99]
       ]
