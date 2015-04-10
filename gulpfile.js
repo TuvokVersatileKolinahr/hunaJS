@@ -88,7 +88,7 @@ gulp.task('copy', function() {
     .pipe(cache(gulp.dest('dist/img')));
 
   // copy all fonts
-  gulp.src( 'src/fonts/**')
+  gulp.src( 'src/fonts/**/*')
     .pipe(cache(gulp.dest('dist/fonts')));
 
   // copy all html && json
