@@ -155,9 +155,13 @@ app.service('DashboardServices', function($q){
       resolve(mockHosts); 
     });
   },
-  getData = function() {
+  getData = function(host) {
     return $q(function(resolve, reject) {
-      resolve(mockData[0].errordata);
+      for (var i = 0; i < mockData.length; i++) {
+        if (mockData[i].host === host) {
+          resolve(mockData[i].errordata);
+        }
+      }
     });
   };
   return {

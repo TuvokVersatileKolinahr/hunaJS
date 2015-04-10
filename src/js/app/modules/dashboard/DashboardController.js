@@ -13,6 +13,10 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
       // calculate totals
       calculateTotals(data);
     });
+    DashboardServices.getData(value.host).then(function(data){
+      $scope.dataset = data;
+    });
+
   });
 
 
@@ -21,9 +25,6 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
     if(hosts && angular.isArray(hosts)){
       $scope.selected = hosts[0];
     }
-  });
-  DashboardServices.getData().then(function(data){
-    $scope.dataset = data;
   });
 
   // initialize main chart, data will be loaded later
