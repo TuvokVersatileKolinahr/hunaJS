@@ -91,6 +91,10 @@ gulp.task('copy', function() {
   gulp.src( 'src/fonts/**/*')
     .pipe(cache(gulp.dest('dist/fonts')));
 
+  // copy all fonts
+  gulp.src( 'src/fonts/opensans/**/*')
+    .pipe(cache(gulp.dest('dist/fonts/opensans')));
+
   // copy all html && json
   gulp.src( ['src/js/app/**/*.html', 'src/js/app/**/*.json'])
     .pipe(cache(gulp.dest('dist/js/app')));
