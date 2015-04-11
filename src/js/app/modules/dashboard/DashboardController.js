@@ -13,8 +13,8 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
       // calculate totals
       calculateTotals(data);
     });
-    DashboardServices.getData(value.host).then(function(data){
-      $scope.dataset = data;
+    DashboardServices.getData(value.host).then(function(returnobject){
+      $scope.dataset = returnobject.data.errordata;
     });
 
   });

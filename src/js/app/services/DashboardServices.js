@@ -163,7 +163,11 @@ app.service('DashboardServices', function($q, $http){
     return $q(function(resolve, reject) {
       for (var i = 0; i < mockData.length; i++) {
         if (mockData[i].host === host) {
-          resolve(mockData[i].errordata);
+          // mock a return object as retrieved from api
+          var returnobject = {};
+          returnobject.data = {};
+          returnobject.data.errordata = mockData[i].errordata
+          resolve(returnobject);
         }
       }
     });
@@ -172,10 +176,10 @@ app.service('DashboardServices', function($q, $http){
     return $http.post('/api/data/hosts');
   },
   getData = function(host) {
-
+    return $http.post('/api/data/forhost', {"host": host});
   };
   return {
-    getData:getMockData,
+    getData:getData,
     getHosts:getHosts
   };
 
