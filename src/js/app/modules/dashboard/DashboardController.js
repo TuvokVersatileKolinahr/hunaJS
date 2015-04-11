@@ -20,10 +20,10 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
   });
 
 
-  DashboardServices.getHosts().then(function(hosts){
-    $scope.hosts = hosts;
-    if(hosts && angular.isArray(hosts)){
-      $scope.selected = hosts[0];
+  DashboardServices.getHosts().then(function(returnobject){
+    $scope.hosts = returnobject.data.hosts;
+    if(returnobject.data.hosts && angular.isArray(returnobject.data.hosts)){
+      $scope.selected = returnobject.data.hosts[2];
     }
   });
 

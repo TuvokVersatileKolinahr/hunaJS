@@ -1,4 +1,4 @@
-app.service('DashboardServices', function($q){
+app.service('DashboardServices', function($q, $http){
   var mockData =
   [
       {
@@ -146,16 +146,20 @@ app.service('DashboardServices', function($q){
   /**
    * Returns all domains which the current user is registered to
    */
-  getHosts = function(){
+  getMockHosts = function(){
     return $q(function(resolve, reject) {
       var mockHosts = [];
       for (var i = 0; i < mockData.length; i++) {
         mockHosts.push({"host": mockData[i].host});
       }
-      resolve(mockHosts); 
+      // mock a return object as retrieved from api
+      var returnobject = {};
+      returnobject.data = {};
+      returnobject.data.hosts = mockHosts;
+      resolve(returnobject); 
     });
   },
-  getData = function(host) {
+  getMockData = function(host) {
     return $q(function(resolve, reject) {
       for (var i = 0; i < mockData.length; i++) {
         if (mockData[i].host === host) {
@@ -163,9 +167,15 @@ app.service('DashboardServices', function($q){
         }
       }
     });
+  },
+  getHosts = function() {
+    return $http.post('/api/data/hosts');
+  },
+  getData = function(host) {
+
   };
   return {
-    getData:getData,
+    getData:getMockData,
     getHosts:getHosts
   };
 
