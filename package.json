@@ -1,13 +1,14 @@
 {
-  "name": "gulpDemo",
-  "version": "1.0.0",
-  "description": "Skeleton for a Single Page Application using Gulp and AngularJS",
+  "name": "hunaJS",
+  "version": "0.0.1",
+  "description": "Huna aims to unveil the hidden data that is in your application. Errors become your source of the truth.",
   "main": "gulpfile.js",
   "keywords": [
     "gulp",
     "angular",
     "single page application",
-    "skeleton"
+    "huna",
+    "errors"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,16 +17,19 @@
     "type": "git",
     "url": "https://github.com/elgervb/skeletonSPA/"
   },
-  "author": {
+  "author": [{
     "name": "Elger van Boxtel",
     "email": "elgervb@gmail.com",
     "url": "http://elgervanboxtel.nl"
-  },
+  },{
+    "name": "Wouter Roosendaal",
+    "email": "tuvokki@gmail.com",
+    "url": "http://www.wouterroosendaal.nl"
+  }],
   "bugs": {
-    "url": "https://github.com/elgervb/skeletonSPA/issues",
-    "email": "elgervb@gmail.com"
+    "url": "https://github.com/TuvokVersatileKolinahr/hunaJS/issues"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.5.3",
     "del": "^1.1.1",
