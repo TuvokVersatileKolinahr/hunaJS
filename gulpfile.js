@@ -236,8 +236,11 @@ gulp.task('server', function(){
 
   app.use(express.static(__dirname + "/dist"));
 
-  app.use('/api', proxy(url.parse('http://huna.tuvok.nl:1337/api')));
-  // app.use('/api', proxy(url.parse('http://localhost:1337/api')));
+  if (argv.remote) {
+    app.use('/api', proxy(url.parse('http://huna.tuvok.nl:1337/api')));
+  } else {
+    app.use('/api', proxy(url.parse('http://localhost:1337/api')));
+  }
 
   app.listen(options.serverport); 
   console.log('started webserver on port ' + options.serverport);
