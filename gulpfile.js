@@ -253,6 +253,7 @@ gulp.task('styles', function() {
       minifycss = require('gulp-minify-css'),
       sass = require('gulp-sass');
 
+  return gulp.src(['src/styles/main.scss', 'src/js/vendor/**/c3.min.css'])
     .pipe(plumber(options.plumberConfig()))
     .pipe(sass({ style: 'expanded' }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
