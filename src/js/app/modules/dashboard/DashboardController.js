@@ -4,19 +4,20 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
 
   // update data when selected host has been changed
   $scope.$watch('selected', function(value, oldValue){
-    ChartService.getData(value.host).then(function(data){
-      
-      // set chart data
-      mainChart.load(data);
-      relationsChart.load(data);
+    if (value) {
+      ChartService.getData(value.host).then(function(data){
+        
+        // set chart data
+        mainChart.load(data);
+        relationsChart.load(data);
 
-      // calculate totals
-      calculateTotals(data);
-    });
-    DashboardServices.getData(value.host).then(function(returnobject){
-      $scope.dataset = returnobject.data.errordata;
-    });
-
+        // calculate totals
+        calculateTotals(data);
+      });
+      DashboardServices.getData(value.host).then(function(returnobject){
+        $scope.dataset = returnobject.data.errordata;
+      });
+    }
   });
 
 
