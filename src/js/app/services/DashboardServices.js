@@ -166,7 +166,7 @@ app.service('DashboardServices', function($q, $http){
           // mock a return object as retrieved from api
           var returnobject = {};
           returnobject.data = {};
-          returnobject.data.errordata = mockData[i].errordata
+          returnobject.data.errordata = mockData[i].errordata;
           resolve(returnobject);
         }
       }
