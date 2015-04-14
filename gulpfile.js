@@ -133,7 +133,10 @@ gulp.task('default', ['build']);
  */
 gulp.task('express', function(){
   var app = express(), port = 4000;
-  app.use(express.static(__dirname + "/dist"));
+  var url = require('url');
+  var proxy = require('proxy-middleware');
+  // app.use('/api', proxy(url.parse('http://huna.tuvok.nl:1337/api')));
+  app.use('/api', proxy(url.parse('http://localhost:1337/api')));
   app.listen(port); 
   console.log('started webserver on port ' + port);
 });
