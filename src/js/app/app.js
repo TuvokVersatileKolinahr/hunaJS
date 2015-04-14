@@ -43,18 +43,7 @@ var app = angular.module('HunaJS', ['ngRoute'])
   // Dashboards
   .when('/dashboard', {
     controller: 'DashboardController',
-    templateUrl: '/js/app/modules/dashboard/dashboard.html',
-    resolve: {
-      auth: ["$q", "LoginService", function($q, LoginService) {
-        var userInfo = LoginService.getUserInfo();
-   
-        if (userInfo) {
-          return $q.when(userInfo);
-        } else {
-          return $q.reject({ authenticated: false });
-        }
-      }]
-    }
+    templateUrl: '/js/app/modules/dashboard/dashboard.html'
   });
 
   $locationProvider.html5Mode('true');
