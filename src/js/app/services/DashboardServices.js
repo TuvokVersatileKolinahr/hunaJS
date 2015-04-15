@@ -176,7 +176,9 @@ app.service('DashboardServices', function($q, $http){
     return $http.get('/api/host');
   },
   getData = function(host) {
-    return $http.get('/api/data/forhost', {"host": host});
+    return $http.get('/api/data/forhost', {
+      params: { name: host }
+    });
   };
   return {
     getData:getData,
