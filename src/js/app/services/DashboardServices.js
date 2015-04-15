@@ -173,10 +173,10 @@ app.service('DashboardServices', function($q, $http){
     });
   },
   getHosts = function() {
-    return $http.post('/api/data/hosts');
+    return $http.get('/api/host');
   },
   getData = function(host) {
-    return $http.post('/api/data/forhost', {"host": host});
+    return $http.get('/api/data/forhost', {"host": host});
   };
   return {
     getData:getData,

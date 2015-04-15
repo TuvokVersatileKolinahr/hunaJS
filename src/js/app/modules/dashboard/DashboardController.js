@@ -3,9 +3,9 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
   var mainChart, relationsChart;
 
   // update data when selected host has been changed
-  $scope.$watch('selected', function(value, oldValue){
-    if (value) {
-      ChartService.getData(value.host).then(function(data){
+  $scope.$watch('selected', function(selectedHost, oldValue){
+    if (selectedHost) {
+      ChartService.getData(selectedHost.name).then(function(data){
         
         // set chart data
         mainChart.load(data);
@@ -14,7 +14,7 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
         // calculate totals
         calculateTotals(data);
       });
-      DashboardServices.getData(value.host).then(function(returnobject){
+      DashboardServices.getData(selectedHost.name).then(function(returnobject){
         $scope.dataset = returnobject.data.errordata;
       });
     }
@@ -22,9 +22,9 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
 
 
   DashboardServices.getHosts().then(function(returnobject){
-    $scope.hosts = returnobject.data.hosts;
-    if(returnobject.data.hosts && angular.isArray(returnobject.data.hosts)){
-      $scope.selected = returnobject.data.hosts[2];
+    $scope.hosts = returnobject.data;
+    if(returnobject.data && angular.isArray(returnobject.data)){
+      $scope.selected = returnobject.data[0];
     }
   });
 
