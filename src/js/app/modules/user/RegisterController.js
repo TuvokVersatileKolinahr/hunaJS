@@ -14,13 +14,6 @@ app.controller('RegisterController', function($scope, $location, $http){
     $http({
       method: 'POST',
       url: '/api/user/create',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      transformRequest: function(obj) {
-          var str = [];
-          for(var p in obj)
-          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-          return str.join("&");
-      },
       data: {
         username: $scope.form.username.$modelValue,
         email: $scope.form.email.$modelValue,
