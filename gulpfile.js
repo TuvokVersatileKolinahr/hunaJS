@@ -218,7 +218,7 @@ gulp.task('scripts-app', function() {
  */
 gulp.task('scripts-vendor', function() {
     // script must be included in the right order. First include angular, then angular-route
-  return gulp.src(['src/js/vendor/*/**/angular.min.js','src/js/vendor/*/**/angular-route.min.js', 'src/js/vendor/**/*.js'])
+  return gulp.src(['src/js/vendor/*/**/angular.min.js','src/js/vendor/*/**/angular-ui-router.min.js', 'src/js/vendor/**/*.js'])
     .pipe(gulp.dest('dist/js/vendor'))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/js/vendor'));

@@ -2,54 +2,61 @@
 /*
  * Define the main Huna JS module
  */
-var app = angular.module('HunaJS', ['ngRoute'])
+var app = angular.module('HunaJS', ['ui.router'])
 
 /**
  * Get some routes in place
  */
-.config(function($routeProvider, $locationProvider) {
- 
-  // Root
-  $routeProvider
-  .when('/', {
-	  controller: 'MainController',
-	  templateUrl: '/js/app/modules/main/main.html'
-	})
+.config(function($stateProvider, $urlRouterProvider) {
+  // For any unmatched url, redirect to main state on /
+  $urlRouterProvider.otherwise('/');
+  // Now set up the states
+  $stateProvider
+    .state('main', {
+      url: '/',
+      controller: 'MainController',
+      templateUrl: '/js/app/modules/main/main.html'
+    })
 
-  // error
-  .when('/error', {
-    controller: 'ErrorController',
-    templateUrl: '/js/app/modules/error/error.html'
-  })
+    // error
+    .state('error', {
+      url: '/error',
+      controller: 'ErrorController',
+      templateUrl: '/js/app/modules/error/error.html'
+    })
 
-  // User Routes
-	.when('/user/register', {
-		controller: 'RegisterController',
-		templateUrl: '/js/app/modules/user/register.html'
-	})
-  .when('/user/register/activate', {
-    controller: 'ActivateController',
-    templateUrl: '/js/app/modules/user/activate.html'
-  })
-  .when('/user/login', {
-    controller: 'LoginController',
-    templateUrl: '/js/app/modules/user/login.html'
-  })
-  .when('/user/password', {
-    controller: 'RecoverPasswordController',
-    templateUrl: '/js/app/modules/user/recoverpassword.html'
-  })
-  .when('/user/addhost', {
-    controller: 'HostController',
-    templateUrl: '/js/app/modules/user/host.html'
-  })
+    // User Routes
+    .state('register', {
+      url: '/user/register',
+      controller: 'RegisterController',
+      templateUrl: '/js/app/modules/user/register.html'
+    })
+    .state('activate', {
+      url: '/user/register/activate',
+      controller: 'ActivateController',
+      templateUrl: '/js/app/modules/user/activate.html'
+    })
+    .state('login', {
+      url: '/user/login',
+      controller: 'LoginController',
+      templateUrl: '/js/app/modules/user/login.html'
+    })
+    .state('recover', {
+      url: '/user/password',
+      controller: 'RecoverPasswordController',
+      templateUrl: '/js/app/modules/user/recoverpassword.html'
+    })
+    .state('addhost', {
+      url: '/user/addhost',
+      controller: 'HostController',
+      templateUrl: '/js/app/modules/user/host.html'
+    })
 
-  // Dashboards
-  .when('/dashboard', {
-    controller: 'DashboardController',
-    templateUrl: '/js/app/modules/dashboard/dashboard.html'
-  });
-
-  $locationProvider.html5Mode('true');
+    // Dashboards
+    .state('dashboard', {
+      url: '/dashboard',
+      controller: 'DashboardController',
+      templateUrl: '/js/app/modules/dashboard/dashboard.html'
+    });
 
 }); // end config
