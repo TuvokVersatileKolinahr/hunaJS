@@ -1,0 +1,37 @@
+
+
+  <section class="dashboard">
+
+    <div class="menu">
+      <h3>Add host</h3>
+    </div>
+
+    <div class="content">
+      <h1> Fill in the name of the new host </h1>
+
+        <form class="form host-module" name="form" ng-submit="add_host()" novalidate> 
+
+            <div class="field error" ng-show="error">
+                <p ng-bind-html="error"></p>
+            </div> 
+            
+            <div class="field">
+                <label for="hostname">Hostname</label> 
+                <input type="url" id="hostname" name="hostname" placeholder="Your hostname" autocomplete="off" ng-model="host.hostname" required> 
+
+                <div ng-show="form.$submitted || form.hostname.$touched" class="error">
+                  <span ng-show="form.hostname.$error.required">Please fill in the desired hostname.</span>
+                  <span ng-show="form.hostname.$error.pattern">The hostname must be a valid URL, starting with http[s]://</span>
+                </div>
+            </div> 
+
+            <div class="field buttons">
+                <a class="cancel" ng-click="cancel()">Cancel</a>
+                <button class="btn-blue" type="submit" ng-disabled="form.$invalid">Add</button>
+            </div>
+
+        </form>
+
+    </div>
+
+  </section>

@@ -9,7 +9,7 @@
         <li ng-repeat="host in hosts">
           <a ng-class="{selected: host==selected}" ng-click="select(host)">{{host.name}}</a>
         </li>
-        <li class="add"><button class="btn-red">add host</button>
+        <li class="add"><a href="#/user/addhost"><button class="btn-red">add host</button></a>
       </ul>
 
     </div>
