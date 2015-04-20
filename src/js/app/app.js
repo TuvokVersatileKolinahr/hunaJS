@@ -56,7 +56,19 @@ var app = angular.module('HunaJS', ['ui.router'])
     .state('dashboard', {
       url: '/dashboard',
       controller: 'DashboardController',
-      templateUrl: '/js/app/modules/dashboard/dashboard.html'
+      templateUrl: '/js/app/modules/dashboard/dashboard.html',
+      authenticate: true
     });
 
-}); // end config
+}) // end config
+
+  .run(function ($rootScope, $state, AuthService) {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      console.log("checking for authentication ...");
+      if (toState.authenticate && !AuthService.isAuthenticated()){
+        // User isn’t authenticated
+        $state.transitionTo("login");
+        event.preventDefault(); 
+      }
+    });
+  });
