@@ -1,4 +1,4 @@
-app.service('DashboardServices', function($q, $http){
+app.service('DashboardService', function($q, $http){
   var mockData =
   [
       {

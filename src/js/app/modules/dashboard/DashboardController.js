@@ -1,4 +1,4 @@
-app.controller('DashboardController', function($scope, DashboardServices, ChartService){
+app.controller('DashboardController', function($scope, DashboardService, ChartService){
 
   var mainChart, relationsChart;
 
@@ -14,14 +14,14 @@ app.controller('DashboardController', function($scope, DashboardServices, ChartS
         // calculate totals
         calculateTotals(data);
       });
-      DashboardServices.getData(selectedHost.name).then(function(returnobject){
+      DashboardService.getData(selectedHost.name).then(function(returnobject){
         $scope.dataset = returnobject.data.errordata;
       });
     }
   });
 
 
-  DashboardServices.getHosts().then(function(returnobject){
+  DashboardService.getHosts().then(function(returnobject){
     $scope.hosts = returnobject.data;
     if(returnobject.data && angular.isArray(returnobject.data)){
       $scope.selected = returnobject.data[0];
