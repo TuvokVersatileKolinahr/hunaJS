@@ -62,13 +62,13 @@ var app = angular.module('HunaJS', ['ui.router'])
 
 }) // end config
 
-  .run(function ($rootScope, $state, AuthService) {
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+.run(function ($rootScope, $state, AuthService) {
+  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    if (toState.authenticate && !AuthService.isAuthenticated()){
       console.log("checking for authentication ...");
-      if (toState.authenticate && !AuthService.isAuthenticated()){
-        // User isn’t authenticated
-        $state.transitionTo("login");
-        event.preventDefault(); 
-      }
-    });
+      // User isn’t authenticated
+      $state.transitionTo("login");
+      event.preventDefault(); 
+    }
   });
+});
