@@ -2,7 +2,7 @@
  * Sign in an existing user with userID and password. Only active accounts can log in. 
  * When user signs in, he will be redirected to the dashboard.
  */
-app.controller('LoginController', function($scope, $http, $location){
+app.controller('LoginController', function($scope, $rootScope, $http, $location, AuthService){
 
 	/**
 	 * Tries to login the user, using the login form's fields
@@ -17,7 +17,9 @@ app.controller('LoginController', function($scope, $http, $location){
       }
     })
     .success(function(data, status, headers, config) {
-        // Login succeeded, commence to dashboard
+        // Login succeeded, recive token
+        AuthService.saveLogin(data, status, headers, config);
+        //commence to dashboard
         $location.url("/dashboard");
     })
     .error(function(data, status, headers, config) {
