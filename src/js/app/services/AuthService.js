@@ -11,6 +11,9 @@ app.factory("AuthService", function($rootScope) {
     console.log("Saving ... ", user);
     $rootScope.user = user;
     return true;
+  },
+  getToken = function() {
+    return $rootScope.user.token;
   };
 
   return {
