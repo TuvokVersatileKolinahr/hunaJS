@@ -1,10 +1,15 @@
-app.factory("AuthService", function() {
+app.factory("AuthService", function($rootScope) {
   var isAuthenticated = function() {
     console.log("check you");
-    return true;
+    if ($rootScope.user){
+      return true;
+    } else {
+      return false;
+    }
   },
-  saveLogin = function(data, status, headers, config) {
-    console.log("Saving ... ", data, status, headers, config);
+  saveLogin = function(user) {
+    console.log("Saving ... ", user);
+    $rootScope.user = user;
     return true;
   };
 
