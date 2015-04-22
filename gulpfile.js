@@ -334,7 +334,7 @@ gulp.task('watch', function() {
   gulp.watch(options.src + 'styles/**/*.scss', ['styles']);
 
   // Watch app .js files
-  gulp.watch(options.rc + 'js/app/**/*.js', ['scripts-app']);
+  gulp.watch(options.src + 'js/app/**/*.js', ['scripts-app']);
 
   // Watch vendor .js files
   gulp.watch(options.src + 'js/vendor/**/*.js', ['scripts-vendor']);
