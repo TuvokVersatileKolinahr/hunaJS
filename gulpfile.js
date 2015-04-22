@@ -109,6 +109,7 @@ gulp.task('copy-template', function() {
 gulp.task('copy-index', function() {
    // copy the index.html
    return gulp.src(options.src + 'index.html')
+    .pipe(gulpif(argv.dev, replace(/app.min.js/g, 'app.js')))
     .pipe(gulpif(options.liveReload, replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1")))
     .pipe(cache(gulp.dest(options.dist)));
 });
@@ -170,6 +171,7 @@ gulp.task('live-reload', ['watch'], function() {
 
   // add livereload script to the index.html
   gulp.src([options.src + 'index.html'])
+   .pipe(gulpif(argv.dev, replace(/app.min.js/g, 'app.js')))
    .pipe(replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1"))
    .pipe(gulp.dest(options.dist));
    
