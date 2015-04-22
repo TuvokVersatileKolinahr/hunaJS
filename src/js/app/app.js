@@ -62,13 +62,22 @@ var app = angular.module('HunaJS', ['ui.router'])
 
 }) // end config
 
-.run(function ($rootScope, $state, AuthService) {
+.run(function ($rootScope, $state, $injector, AuthService) {
+  // check for authentication on state change
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
     if (toState.authenticate && !AuthService.isAuthenticated()){
       console.log("checking for authentication ...");
-      // User isn’t authenticated
+      // User is not authenticated
       $state.transitionTo("login");
       event.preventDefault(); 
     }
   });
+
+  // send token with the http requests
+  $injector.get("$http").defaults.transformRequest = function(data, headersGetter) {
+      if ($rootScope.user) headersGetter()['Authorization'] = "Bearer " + $rootScope.user.token;
+      if (data) {
+          return angular.toJson(data);
+      }
+  };
 });
