@@ -1,7 +1,7 @@
 app.factory("AuthService", function($rootScope) {
   var isAuthenticated = function() {
     console.log("check you");
-    if ($rootScope.user){
+    if ($rootScope.auth.user){
       return true;
     } else {
       return false;
@@ -9,11 +9,11 @@ app.factory("AuthService", function($rootScope) {
   },
   saveLogin = function(user) {
     console.log("Saving ... ", user);
-    $rootScope.user = user;
+    $rootScope.auth = user;
     return true;
   },
   getToken = function() {
-    return $rootScope.user.token;
+    return $rootScope.auth.user.token;
   };
 
   return {

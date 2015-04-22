@@ -62,6 +62,7 @@ var app = angular.module('HunaJS', ['ui.router'])
 
 }) // end config
 
+// Run blocks are the closest thing in Angular to the main method
 .run(function ($rootScope, $state, $injector, AuthService) {
   // check for authentication on state change
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
@@ -75,7 +76,7 @@ var app = angular.module('HunaJS', ['ui.router'])
 
   // send token with the http requests
   $injector.get("$http").defaults.transformRequest = function(data, headersGetter) {
-      if ($rootScope.user) headersGetter()['Authorization'] = "Bearer " + $rootScope.user.token;
+      if ($rootScope.auth && $rootScope.auth.user) headersGetter()['Authorization'] = "Bearer " + $rootScope.auth.user.token;
       if (data) {
           return angular.toJson(data);
       }
