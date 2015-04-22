@@ -1,7 +1,7 @@
 app.factory("AuthService", function($rootScope) {
   var isAuthenticated = function() {
     console.log("check you");
-    if ($rootScope.auth.user){
+    if ($rootScope.auth && $rootScope.auth.user) {
       return true;
     } else {
       return false;
