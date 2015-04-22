@@ -76,9 +76,10 @@ var app = angular.module('HunaJS', ['ui.router'])
 
   // send token with the http requests
   $injector.get("$http").defaults.transformRequest = function(data, headersGetter) {
-      if ($rootScope.auth && $rootScope.auth.user) headersGetter()['Authorization'] = "Bearer " + $rootScope.auth.user.token;
+      if ($rootScope.auth && $rootScope.auth.user)
+        headersGetter()['Authorization'] = "Bearer " + $rootScope.auth.user.token; // jshint ignore:line
       if (data) {
-          return angular.toJson(data);
+        return angular.toJson(data);
       }
   };
 });
