@@ -4,6 +4,18 @@
 app.controller('HostController', function($scope, $window, $http){
   $scope.host = {};
 
+  $scope.logout = function(){
+    $http({
+      method: 'POST',
+      url: '/api/user/logout'
+    }).success(function(data, status, headers, config) {
+        $window.history.back(); // 'redirects' to dashboard TODO: fix with $location
+      }).
+      error(function(data, status, headers, config) {
+        console.log("Logout failed ... ", data);
+    });
+  };
+
   $scope.cancel = function(){
     $window.history.back();
   };
