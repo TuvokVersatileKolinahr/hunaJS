@@ -12,11 +12,16 @@ app.factory("AuthService", function($rootScope) {
     $rootScope.auth = user;
     return true;
   },
+  clearLogin = function() {
+    console.log("User in scope: ", $rootScope.auth.user);
+    delete $rootScope.auth.user;
+  },
   getToken = function() {
     return $rootScope.auth.user.token;
   };
 
   return {
+    clearLogin: clearLogin,
     isAuthenticated: isAuthenticated,
     saveLogin: saveLogin
   };
