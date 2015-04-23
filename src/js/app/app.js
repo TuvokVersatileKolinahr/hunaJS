@@ -44,12 +44,14 @@ var app = angular.module('HunaJS', ['ui.router'])
     .state('recover', {
       url: '/user/password',
       controller: 'RecoverPasswordController',
-      templateUrl: '/js/app/modules/user/recoverpassword.html'
+      templateUrl: '/js/app/modules/user/recoverpassword.html',
+      authenticate: true
     })
     .state('addhost', {
       url: '/user/addhost',
       controller: 'HostController',
-      templateUrl: '/js/app/modules/user/host.html'
+      templateUrl: '/js/app/modules/user/host.html',
+      authenticate: true
     })
 
     // Dashboards
