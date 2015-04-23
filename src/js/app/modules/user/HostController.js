@@ -7,7 +7,7 @@ app.controller('HostController', function($scope, $window, $location, $http){
   $scope.logout = function(){
     $http({
       method: 'POST',
-      url: '/api/user/logout'
+      url: '/api/logout'
     }).success(function(data, status, headers, config) {
         $location.url("/");
       }).
