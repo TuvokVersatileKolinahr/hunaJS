@@ -1,7 +1,7 @@
 /**
  * Any registered user can add a new host.
  */
-app.controller('HostController', function($scope, $window, $location, $http){
+app.controller('HostController', function($scope, $window, $location, $http, AuthService){
   $scope.host = {};
 
   $scope.logout = function(){
@@ -9,10 +9,10 @@ app.controller('HostController', function($scope, $window, $location, $http){
       method: 'POST',
       url: '/api/logout'
     }).success(function(data, status, headers, config) {
-        $location.url("/");
-      }).
-      error(function(data, status, headers, config) {
-        console.log("Logout failed ... ", data);
+      AuthService.clearLogin();
+      $location.url("/");
+    }).error(function(data, status, headers, config) {
+      console.log("Logout failed ... ", data);
     });
   };
 
