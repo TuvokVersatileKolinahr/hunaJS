@@ -60,6 +60,10 @@ var app = angular.module('HunaJS', ['ui.router'])
       controller: 'DashboardController',
       templateUrl: '/js/app/modules/dashboard/dashboard.html',
       authenticate: true
+    })
+    .state('dashboard.host', {
+      url: '^/dashboard/:hostname',
+      templateUrl: '/js/app/modules/dashboard/partials/overview.html'
     });
 
 }) // end config
