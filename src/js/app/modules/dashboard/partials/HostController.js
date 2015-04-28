@@ -1,20 +1,7 @@
 /**
  * Any registered user can add a new host.
  */
-app.controller('HostController', function($scope, $window, $location, $http, AuthService){
-  $scope.host = {};
-
-  $scope.logout = function(){ //  TODO logout should go to user
-    $http({
-      method: 'POST',
-      url: '/api/logout'
-    }).success(function(data, status, headers, config) {
-      AuthService.clearLogin();
-      $location.url("/");
-    }).error(function(data, status, headers, config) {
-      console.log("Logout failed ... ", data);
-    });
-  };
+app.controller('HostController', function($scope, $window, $location, $http){
 
   $scope.cancel = function(){
     $window.history.back();
