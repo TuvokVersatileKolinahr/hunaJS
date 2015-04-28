@@ -4,7 +4,7 @@
 app.controller('HostController', function($scope, $window, $location, $http, AuthService){
   $scope.host = {};
 
-  $scope.logout = function(){
+  $scope.logout = function(){ //  TODO logout should go to user
     $http({
       method: 'POST',
       url: '/api/logout'
@@ -33,6 +33,7 @@ app.controller('HostController', function($scope, $window, $location, $http, Aut
       }).
       error(function(data, status, headers, config) {
         console.log("data, status, headers, config", data, status, headers, config);
+        // TODO add error handling
     });
   };
 });

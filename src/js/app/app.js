@@ -47,12 +47,6 @@ var app = angular.module('HunaJS', ['ui.router'])
       templateUrl: '/js/app/modules/user/recoverpassword.html',
       authenticate: true
     })
-    .state('addhost', {
-      url: '/user/addhost',
-      controller: 'HostController',
-      templateUrl: '/js/app/modules/user/host.html',
-      authenticate: true
-    })
 
     // Dashboards
     .state('dashboard', {
@@ -64,6 +58,11 @@ var app = angular.module('HunaJS', ['ui.router'])
     .state('dashboard.host', {
       url: '^/dashboard/:hostname',
       templateUrl: '/js/app/modules/dashboard/partials/overview.html'
+    })
+    .state('dashboard.addhost', {
+      url: '^dashboard/addhost',
+      controller: 'HostController',
+      templateUrl: '/js/app/modules/dashboard/partials/addhost.html'
     });
 
 }) // end config
