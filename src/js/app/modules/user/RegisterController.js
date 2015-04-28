@@ -7,7 +7,7 @@ app.controller('RegisterController', function($scope, $location, $http){
    * Cancels the registration and takes the user back to the main page
    */
 	$scope.cancel = function(){
-    $location.path('/');
+    $location.path('/'); // redirect to the home page
   };
 
 	$scope.register = function(){
@@ -15,9 +15,9 @@ app.controller('RegisterController', function($scope, $location, $http){
       method: 'POST',
       url: '/api/user/create',
       data: {
-        username: $scope.form.username.$modelValue,
-        email: $scope.form.email.$modelValue,
-        password: $scope.form.password.$modelValue
+        username: $scope.user.username,
+        email: $scope.user.email,
+        password: $scope.user.password
       }
     })
     .success(function(data, status, headers, config) {
