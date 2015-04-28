@@ -10,11 +10,11 @@
             
             <div class="field">
                 <label for="hostname">Hostname</label> 
-                <input type="url" id="hostname" name="hostname" placeholder="Your hostname" autocomplete="off" ng-model="host.hostname" required> 
+                <input type="text" pattern="([a-zA-Z0-9]+\.)?[a-zA-Z0-9]+\.[a-zA-Z0-9]+" id="hostname" name="hostname" placeholder="Your hostname" autocomplete="off" ng-model="host.hostname" required> 
 
                 <div ng-show="form.$submitted || form.hostname.$touched" class="error">
                   <span ng-show="form.hostname.$error.required">Please fill in the desired hostname.</span>
-                  <span ng-show="form.hostname.$error.pattern">The hostname must be a valid URL, starting with http[s]://</span>
+                  <span ng-show="form.hostname.$error.pattern">The hostname must be a valid host, eg hostname.com</span>
                 </div>
             </div> 
 
