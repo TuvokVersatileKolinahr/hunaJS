@@ -2,7 +2,7 @@
 /*
  * Define the main Huna JS module
  */
-var app = angular.module('HunaJS', ['ui.router'])
+var app = angular.module('HunaJS', ['ui.router', 'angular-cache'])
 
 /**
  * Get some routes in place
@@ -65,7 +65,11 @@ var app = angular.module('HunaJS', ['ui.router'])
       templateUrl: '/js/app/modules/dashboard/partials/addhost.html'
     });
 
-}) // end config
+}) // end state config
+
+.config(function (CacheFactoryProvider) {
+  angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+}) // end cache init
 
 // Run blocks are the closest thing in Angular to the main method
 .run(function ($rootScope, $state, $injector, AuthService) {
