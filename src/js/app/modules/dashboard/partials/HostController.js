@@ -20,7 +20,7 @@ app.controller('HostController', function($scope, $window, $location, $http){
       }).
       error(function(data, status, headers, config) {
         console.log("data, status, headers, config", data, status, headers, config);
-        // TODO add error handling
+        $scope.error = data.summary;
     });
   };
 });
