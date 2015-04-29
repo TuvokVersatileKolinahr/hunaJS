@@ -173,6 +173,7 @@ gulp.task('live-reload', ['watch'], function() {
   // add livereload script to the index.html
   gulp.src([options.src + 'index.html'])
    .pipe(gulpif(argv.dev, replace(/app.min.js/g, 'app.js')))
+   .pipe(gulpif(argv.nohuna, replace('<script src=\'js/huna.min.js\'></script>', '')))
    .pipe(replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1"))
    .pipe(gulp.dest(options.dist));
    
