@@ -78,6 +78,17 @@ section.hunajs{
           }
         }
       }
+      .login{
+        font-size: .6em;
+        margin-top: 1rem;
+
+        a{
+          color: $font-color-light;
+          &:hover{
+            border-bottom-color: $font-color-light;
+          }
+        }
+      }
     }
     
   }
