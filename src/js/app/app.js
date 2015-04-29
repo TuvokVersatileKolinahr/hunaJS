@@ -57,12 +57,14 @@ var app = angular.module('HunaJS', ['ui.router', 'angular-cache'])
     })
     .state('dashboard.host', {
       url: '^/dashboard/:hostname',
-      templateUrl: '/js/app/modules/dashboard/partials/overview.html'
+      templateUrl: '/js/app/modules/dashboard/partials/overview.html',
+      authenticate: true
     })
     .state('dashboard.addhost', {
       url: '^dashboard/addhost',
       controller: 'HostController',
-      templateUrl: '/js/app/modules/dashboard/partials/addhost.html'
+      templateUrl: '/js/app/modules/dashboard/partials/addhost.html',
+      authenticate: true
     });
 
 }) // end state config
