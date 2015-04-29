@@ -33,8 +33,8 @@
     "url": "https://github.com/TuvokVersatileKolinahr/hunaJS/issues"
   },
   "options": {
-    "src": "src/",
-    "dist": "dist/",
+    "src": "./src/",
+    "dist": "./dist/",
     "serverport": 4000
   },
   "license": "MIT",

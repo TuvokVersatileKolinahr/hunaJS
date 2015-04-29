@@ -213,7 +213,22 @@ gulp.task('scripts-app', function() {
       sourcemaps = require('gulp-sourcemaps'),
       uglify = require('gulp-uglify');
 
-  return gulp.src(options.src + 'js/app/**/*.js')
+  // gulpify the huna library
+  gulp.src([options.src + 'js/app/huna.js'])
+    .pipe(plumber(options.plumberConfig()))
+    .pipe(ngannotate({gulpWarnings: false}))
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish))
+    .pipe(gulp.dest(options.dist + 'js'))
+    // make minified 
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulpif(!argv.dev, stripDebug()))
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(!argv.dev, uglify()))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(options.dist + 'js'));
+
+  return gulp.src(['!'+options.src + 'js/app/huna.js', options.src + 'js/app/**/*.js'])
     .pipe(plumber(options.plumberConfig()))
     .pipe(ngannotate({gulpWarnings: false}))
     .pipe(jshint())
