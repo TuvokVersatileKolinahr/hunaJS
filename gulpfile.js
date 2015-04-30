@@ -129,7 +129,7 @@ gulp.task('default', ['build']);
 gulp.task('docs-js', ['todo'], function(){
   var gulpDoxx = require('gulp-doxx');
 
-  gulp.src([settings.src + '/js/**/*.js', 'README.md', settings.reports + 'TODO.md'])
+  gulp.src([settings.src + '/js/**/*.js', 'README.md', settings.reports + '/TODO.md'])
     .pipe(gulpDoxx({
       title: config.name,
       urlPrefix: "file:///"+__dirname+settings.reports
