@@ -2,7 +2,7 @@
 /*
  * Define the main Huna JS module
  */
-var app = angular.module('HunaJS', ['ui.router'])
+var app = angular.module('HunaJS', ['ui.router', 'angular-cache'])
 
 /**
  * Get some routes in place
@@ -44,12 +44,8 @@ var app = angular.module('HunaJS', ['ui.router'])
     .state('recover', {
       url: '/user/password',
       controller: 'RecoverPasswordController',
-      templateUrl: '/js/app/modules/user/recoverpassword.html'
-    })
-    .state('addhost', {
-      url: '/user/addhost',
-      controller: 'HostController',
-      templateUrl: '/js/app/modules/user/host.html'
+      templateUrl: '/js/app/modules/user/recoverpassword.html',
+      authenticate: true
     })
 
     // Dashboards
@@ -58,9 +54,24 @@ var app = angular.module('HunaJS', ['ui.router'])
       controller: 'DashboardController',
       templateUrl: '/js/app/modules/dashboard/dashboard.html',
       authenticate: true
+    })
+    .state('dashboard.host', {
+      url: '^/dashboard/:hostname',
+      templateUrl: '/js/app/modules/dashboard/partials/overview.html',
+      authenticate: true
+    })
+    .state('dashboard.addhost', {
+      url: '^dashboard/addhost',
+      controller: 'HostController',
+      templateUrl: '/js/app/modules/dashboard/partials/addhost.html',
+      authenticate: true
     });
 
-}) // end config
+}) // end state config
+
+.config(function (CacheFactoryProvider) {
+  angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+}) // end cache init
 
 // Run blocks are the closest thing in Angular to the main method
 .run(function ($rootScope, $state, $injector, AuthService) {
