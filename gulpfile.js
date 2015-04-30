@@ -110,8 +110,9 @@ gulp.task('copy-index', function() {
    // copy the index.html
    return gulp.src(settings.src + 'index.html')
     .pipe(gulpif(argv.dev, replace(/app.min.js/g, 'app.js')))
-    .pipe(gulpif(settings.liveReload, replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1")))
-    .pipe(cache(gulp.dest(settings.dist)));
+    .pipe(gulpif(argv.nohuna, replace('<script src=\'js/huna.min.js\'></script>', '')))
+    .pipe(gulpif(options.liveReload, replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1")))
+    .pipe(cache(gulp.dest(options.dist)));
 });
 
 
@@ -187,6 +188,7 @@ gulp.task('live-reload', ['watch'], function() {
   // add livereload script to the index.html
   gulp.src([settings.src + 'index.html'])
    .pipe(gulpif(argv.dev, replace(/app.min.js/g, 'app.js')))
+   .pipe(gulpif(argv.nohuna, replace('<script src=\'js/huna.min.js\'></script>', '')))
    .pipe(replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1"))
    .pipe(gulp.dest(settings.dist));
    
@@ -228,8 +230,23 @@ gulp.task('scripts-app', ['docs-js'], function() {
       sourcemaps = require('gulp-sourcemaps'),
       uglify = require('gulp-uglify');
 
-  return gulp.src(settings.src + 'js/app/**/*.js')
-    .pipe(plumber(settings.plumberConfig()))
+  // gulpify the huna library
+  gulp.src([options.src + 'js/app/huna.js'])
+    .pipe(plumber(options.plumberConfig()))
+    .pipe(ngannotate({gulpWarnings: false}))
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish))
+    .pipe(gulp.dest(options.dist + 'js'))
+    // make minified 
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulpif(!argv.dev, stripDebug()))
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(!argv.dev, uglify()))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(options.dist + 'js'));
+
+  return gulp.src(['!'+options.src + 'js/app/huna.js', options.src + 'js/app/**/*.js'])
+    .pipe(plumber(options.plumberConfig()))
     .pipe(ngannotate({gulpWarnings: false}))
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
