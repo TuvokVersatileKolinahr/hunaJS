@@ -32,9 +32,10 @@
   "bugs": {
     "url": "https://github.com/TuvokVersatileKolinahr/hunaJS/issues"
   },
-  "options": {
-    "src": "src/",
-    "dist": "dist/",
+  "settings": {
+    "src": "./src/",
+    "dist": "./dist/",
+    "reports": "./reports/",
     "serverport": 4000
   },
   "license": "MIT",
@@ -46,6 +47,7 @@
     "gulp-autoprefixer": "^2.0.0",
     "gulp-cache": "^0.2.4",
     "gulp-concat": "^2.4.2",
+    "gulp-doxx": "0.0.4",
     "gulp-flatten": "0.0.4",
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.0.0",
