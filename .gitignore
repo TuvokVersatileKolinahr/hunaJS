@@ -34,3 +34,5 @@ TODO.md
 *.sublime-project
 *.sublime-workspace
 todo.json
+
+reports/*
