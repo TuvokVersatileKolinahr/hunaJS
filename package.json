@@ -35,6 +35,7 @@
   "settings": {
     "src": "./src/",
     "dist": "./dist/",
+    "reports": "./reports",
     "serverport": 4000
   },
   "license": "MIT",
